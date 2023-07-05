@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `pccw`.`user_model` (
     `last_name` varchar(128) NOT NULL COMMENT 'The user last name',
     `birthdate` varchar(64) COMMENT 'birthdate 20230111',
     `gender` varchar(8)  COMMENT 'male, female, other',
+    `zipcode` int(11)  COMMENT 'zipcode',
     `deleted` tinyint (1) NOT NULL DEFAULT '0' COMMENT 'is deleted',
     `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
     `gmt_modified` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'last update time',

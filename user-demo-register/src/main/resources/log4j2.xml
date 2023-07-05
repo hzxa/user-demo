@@ -13,7 +13,7 @@
         <console name="STDOUT" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p %c{1.} %msg%n"/>
         </console>
-        <RollingRandomAccessFile name="InfoFile" fileName="${LOG_HOME}/info.log" filePattern="${LOG_HOME}/info-%i.log" immediateFlush="false">
+        <RollingRandomAccessFile name="InfoFile" fileName="${LOG_HOME}/info.log" filePattern="${LOG_HOME}/info-%d{dd}-%i.log" immediateFlush="false">
             <filters>
                 <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
                 <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
