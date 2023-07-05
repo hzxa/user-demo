@@ -16,7 +16,7 @@ This project demo how to register an user, edit/read/(soft) delete single or mul
 make build
 ```
 
-note: if need to rebuild the UIs, please go to the user-demo-xxx-ui directory, and run
+note: if want to rebuild the UIs, please go to the user-demo-xxx-ui directory, and run
 ``` bash
 npm install
 npm run build
@@ -28,7 +28,7 @@ make local-run
 ```
 
 # How To Use
-After running the images successfully:
+After running the images locally:
 - for user registration, please access: http://localhost:8001
 - for user admin, please access: http://localhost:8002
 
@@ -37,4 +37,12 @@ After running the images successfully:
 please refer to the swagger:
 - user registation swagger: http://localhost:8099/swagger-ui.html
 - User admin swagger: http://localhost:8088/swagger-ui.html
+
+# Folder structure
+* user-demo-admin - admin backend API
+* user-demo-admin-ui - admin UI
+* user-demo-register - user register backend API
+* user-demo-register-ui  - user register UI
+* user-demo-core - common module for admin and register backend
+  
 
