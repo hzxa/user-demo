@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS `pccw`.`user_passwords` (
 
 CREATE TABLE IF NOT EXISTS `pccw`.`user_model` (
     `user_id` bigint (20) unsigned NOT NULL COMMENT 'user id',
-    `name` varchar(128) NOT NULL COMMENT 'The user name',
+    `first_name` varchar(128) NOT NULL COMMENT 'The user first name',
+    `last_name` varchar(128) NOT NULL COMMENT 'The user last name',
     `birthdate` varchar(64) COMMENT 'birthdate 20230111',
     `gender` varchar(8)  COMMENT 'male, female, other',
     `deleted` tinyint (1) NOT NULL DEFAULT '0' COMMENT 'is deleted',
