@@ -17,7 +17,7 @@ services:
       - 3306:3306
     volumes:
       - ./setup.sql:/docker-entrypoint-initdb.d/setup.sql
-      - ./dbdata:/var/lib/mysql
+#      - ./dbdata:/var/lib/mysql
   user-register:
     image: user-demo-register:latest
     container_name: user-demo-register
