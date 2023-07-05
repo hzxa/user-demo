@@ -123,9 +123,10 @@
         }).catch(err => {
           console.log(err)
            this.$message({
-                message: '更新失败',
+                message: '更新失败,请重新登录',
                 type: 'error'
               })
+           this.$router.push({ path: '/login' })
         })
 
 
@@ -160,9 +161,10 @@
           }
           ).catch(err => {
             this.$message({
-                    message: '更新失败',
+                    message: '更新失败，请重新登录',
                     type: 'error'
                   })
+            this.$router.push({ path: '/login' })
           })
 				}).catch(() => {
 

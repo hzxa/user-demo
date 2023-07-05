@@ -57,7 +57,7 @@ public class UserModelServiceImpl implements UserModelService {
     @Override
     public UserModel update(Long userId, String firstName, String lastName, String birthdate, String gender, Integer zipcode) {
         User user = userMapper.selectByPrimaryKey(userId);
-        if(user == null){
+        if(user == null || user.getDeleted()){
             throw new UserDoseNotExistException();
         }
         UserModel userModel = new UserModel();
