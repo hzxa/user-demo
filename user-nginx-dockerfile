@@ -1,0 +1,9 @@
+FROM nginx:1.25
+
+COPY ./user-demo-register-ui/dist/ /data/user-demo-register-ui/dist/
+
+COPY ./user-demo-admin-ui/dist/ /data/user-demo-admin-ui/dist/
+
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+
+#COPY ./nginx.conf /usr/local/nginx/conf/conf.d

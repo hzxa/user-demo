@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.user.core.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="org.example.user.core.domain.UserInfo">
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="birthdate" jdbcType="VARCHAR" property="birthdate" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="zipcode" jdbcType="INTEGER" property="zipcode" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+
+  <select id="count" resultType="java.lang.Long">
+    SELECT
+      COUNT(*)
+    FROM users
+    <where>
+      <if test="email != null">
+        and users.`email` like concat('%', '${email}', '%')
+      </if>
+      <if test="deleted != null">
+        and users.`deleted` = #{deleted}
+      </if>
+    </where>
+
+  </select>
+  <select id="select" resultMap="BaseResultMap">
+    SELECT
+      t1.`id` as user_id,
+      t1.`email` as email,
+      t2.`first_name`,
+      t2.`last_name`,
+      t2.`birthdate`,
+      t2.`gender`,
+      t2.`zipcode`,
+      t1.`deleted`,
+      t1.`gmt_create`,
+      t2.`gmt_modified`
+    FROM  `users` t1
+    JOIN user_model t2 on t1.id = t2.user_id
+    <where>
+      <if test="email != null">
+        and t1.`email` like concat('%', '${email}', '%')
+      </if>
+
+      <if test="deleted != null">
+        and t1.`deleted` = #{deleted}
+      </if>
+    </where>
+    ORDER BY t1.`id`
+    <if test="limit != null">
+      <if test="offset != null">
+        LIMIT ${offset}, ${limit}
+      </if>
+      <if test="offset ==null">
+        LIMIT ${limit}
+      </if>
+    </if>
+  </select>
+
+</mapper>

@@ -1,0 +1,11 @@
+FROM openjdk:8
+
+# Change TimeZone
+RUN echo "Asia/Shanghai" > /etc/timezone
+RUN dpkg-reconfigure -f noninteractive tzdata
+
+COPY ./user-demo-admin/target/*.jar /data/app.jar
+
+# Start my app
+
+ENTRYPOINT java -server -Djava.io.tmpdir=/data -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector -Xmx256m -Xss512k -Xms256m -XX:MaxNewSize=128m -XX:NewSize=128m -XX:SurvivorRatio=8 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -Dspring.profiles.active=prod -jar /data/app.jar
